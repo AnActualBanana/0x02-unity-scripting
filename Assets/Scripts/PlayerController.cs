@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Diagnostics;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,6 +46,10 @@ public class PlayerController : MonoBehaviour
 		{
 			health--;
 			Debug.Log("Health: " + health);
+		}
+		else if (other.CompareTag("Goal"))
+		{
+			Debug.Log("You win!");
 		}
     }
 }
