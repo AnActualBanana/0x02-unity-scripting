@@ -11,14 +11,4 @@ public class Rotator : MonoBehaviour {
         transform.Rotate(new Vector3(rotationSpeed * Time.deltaTime, 0, 0));
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
-            playerController.score++;
-            Debug.Log("Score: " + playerController.score);
-            gameObject.SetActive(false);
-        }
-    }
 }

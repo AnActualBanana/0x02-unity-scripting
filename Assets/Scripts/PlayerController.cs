@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	public float score = 0;
+	private int score = 0;
+	public int health = 5;
     public float speed = 10.0f; //(acceleration)
     public float maxSpeed = 20.0f;
     public float deceleration = 35.0f;
@@ -31,5 +32,19 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.position += velocity * Time.deltaTime;
+    }
+	private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pickup"))
+        {
+            score++;
+            Debug.Log("Score: " + score);
+            other.gameObject.SetActive(false);
+        }
+		else if (other.CompareTag("Trap"))
+		{
+			health--;
+			Debug.Log("Health: " + health);
+		}
     }
 }
