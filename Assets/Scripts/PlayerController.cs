@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	public float score = 0;
     public float speed = 10.0f; //(acceleration)
     public float maxSpeed = 20.0f;
     public float deceleration = 35.0f;
