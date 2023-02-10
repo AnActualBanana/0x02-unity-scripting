@@ -6,13 +6,27 @@ public class PlayerController : MonoBehaviour
 {
 	private int score = 0;
 	public int health = 5;
+	private int originalHealth;
+    private int originalScore;
     public float speed = 10.0f; //(acceleration)
     public float maxSpeed = 20.0f;
     public float deceleration = 35.0f;
     private Vector3 velocity = Vector3.zero;
+	private void Start()
+    {
+        originalHealth = health;
+        originalScore = score;
+    }
 
     private void Update()
     {
+		if (health == 0)
+		{
+			Debug.Log("Game Over!");
+			health = originalHealth;
+            score = originalScore;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+		}
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical);
